@@ -20,3 +20,15 @@ quote.innerText = "Funny quote haha";
 
 const h1 = document.querySelector("h1");
 h1.style.textDecoration = "underline";
+
+//task 4
+
+const ul = document.querySelector("ul");
+
+for (let i = 0; i < extraTips.length; i++) {
+  const newLi = document.createElement("li");
+  newLi.innerText = extraTips[i];
+  ul.appendChild(newLi);
+}
+
+//task 5
