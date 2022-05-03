@@ -32,3 +32,6 @@ for (let i = 0; i < extraTips.length; i++) {
 }
 
 //task 5
+document.title = "Pretty Glonky";
+
+//task 6
