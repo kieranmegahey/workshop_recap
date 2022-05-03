@@ -32,6 +32,24 @@ for (let i = 0; i < extraTips.length; i++) {
 }
 
 //task 5
-document.title = "Pretty Glonky";
+// document.title = "Pretty Glonky";
 
 //task 6
+
+function changeTitle() {
+  document.title = "Pretty Glonky";
+}
+
+const button = document.querySelector("#click-me");
+button.addEventListener("click", changeTitle);
+
+//task 7
+
+const inputValue = document.querySelector("input");
+
+function changeH1() {
+  h1.innerText = inputValue.value;
+}
+
+const editButton = document.querySelector("#edit");
+editButton.addEventListener("click", changeH1);
