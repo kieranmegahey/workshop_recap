@@ -14,3 +14,9 @@ let extraTips = [
   "Save money buy not eating!",
   "Don't let your partner know...",
 ];
+
+const quote = document.querySelector(".quote");
+quote.innerText = "Funny quote haha";
+
+const h1 = document.querySelector("h1");
+h1.style.textDecoration = "underline";
