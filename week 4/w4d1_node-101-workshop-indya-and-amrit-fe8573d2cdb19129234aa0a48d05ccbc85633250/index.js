@@ -1,4 +1,5 @@
 import myCollection from "./data.js";
+import chalk from "chalk";
 console.log(myCollection);
 
 // c. Create a function called describeItem, which should take in an item as a parameter (the argument handed to this function would be an item from our collection). The function should console.log a message according to how many of the item you have.
@@ -10,11 +11,15 @@ console.log(myCollection);
 function describeItem(item) {
   if (item.count > 1) {
     console.log(
-      `I have ${item.count} ${item.name}'s. Heres what I like about them: ${item.whatILike}.`
+      `I have ${item.count} ${chalk.cyan(
+        item.name
+      )}'s. Heres what I like about them: ${item.whatILike}.`
     );
   } else
     console.log(
-      `I have a ${item.name}. Here's what I like about it: ${item.whatILike}`
+      `I have a ${chalk.cyan(item.name)}. Here's what I like about it: ${
+        item.whatILike
+      }`
     );
 }
 
@@ -31,3 +36,10 @@ function describeCollection(array) {
   array.forEach(describeItem);
 }
 console.log(describeCollection(myCollection));
+
+// 4c. Use chalk to do the following in your console.logs within describeItem:
+
+// Make the name of each item in your collection cyan
+// Make the count of each item in your collection yellow
+// Make what you like about each item in your collection green
+console.log(chalk.green("Hello"));
