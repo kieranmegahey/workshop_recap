@@ -1,12 +1,11 @@
-import { deployAstronauts } from '../libs/data.js'
-
+import { deployAstronauts } from "../libs/data.js";
 
 export async function getAstronauts() {
   let astronauts = deployAstronauts();
   return astronauts;
 }
 
-export async function createAstronaut(astronaut) {
+export function createAstronaut(astronaut) {
   let astronauts = deployAstronauts();
   astronauts = [...astronauts, astronaut];
   return astronauts[astronauts.length - 1];
@@ -37,10 +36,7 @@ export async function replaceAstronautById(requestId, astronautReplacement) {
 export async function deleteAstronautById(requestId) {
   let astronauts = deployAstronauts();
   const index = astronauts.findIndex(({ id }) => id === requestId);
-  astronauts = [
-    ...astronauts.slice(0, index),
-    ...astronauts.slice(index + 1),
-  ];
+  astronauts = [...astronauts.slice(0, index), ...astronauts.slice(index + 1)];
 
   return astronauts;
 }
@@ -71,8 +67,12 @@ export async function updateAstronautById(requestId, updates) {
 export async function getAstronautsByName(search) {
   let astronauts = deployAstronauts();
   const searchResults = astronauts.filter(({ firstName }) =>
-    firstName.toLowerCase().includes(search.toLowerCase()).filter(({ lastName }) =>
-    lastName.toLowerCase().includes(search.toLowerCase()))
+    firstName
+      .toLowerCase()
+      .includes(search.toLowerCase())
+      .filter(({ lastName }) =>
+        lastName.toLowerCase().includes(search.toLowerCase())
+      )
   );
 
   return searchResults;
