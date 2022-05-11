@@ -38,25 +38,21 @@ app.put("/astronauts/:id", async function (req, res) {
   const id = req.params.id;
   const newAstro = req.body;
   const replacedAstro = await replaceAstronautById(id, newAstro);
-  res.json({ success: true, payload: await getAstronauts() });
+  res.json({ success: true, payload: await replacedAstro });
 });
-
 
 app.delete("/astronauts/:id", async function (req, res) {
   const id = req.params.id;
-  const deletedAstro = deleteAstronautById(id)
-  res.json({success: true, payload: deletedAstro})
+  const deletedAstro = await deleteAstronautById(id);
+  res.json({ success: true, payload: deletedAstro });
+});
 
-  app.patch("/astronauts/:id", async function (req, res) {
-    const id = req.params.id;
-    const updates = req.body;
-    const patchedAstro = await updateAstronautById(id, updates);
-    res.json({ success: true, payload: patchedAstro });
-  });
-// res.json({
-//   "success": boolean,
-//   "payload": returnedData
-//   })
+app.patch("/astronauts/:id", async function (req, res) {
+  const id = req.params.id;
+  const updates = req.body;
+  const patchedAstro = await updateAstronautById(id, updates);
+  res.json({ success: true, payload: patchedAstro });
+});
 
 /* Tasks
 
