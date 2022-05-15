@@ -15,8 +15,12 @@ test("Has the structure { success: true }", function () {
   const apiResponse = {
     success: true,
   };
+  const actual = apiResponse;
+  const expected = {
+    success: true,
+  };
+  expect(actual).toStrictEqual(expected);
 });
-
 /**
  * Write a test that checks whether the variable `apiResponse` contains an object that has the following structure:
  *
@@ -32,6 +36,12 @@ test("Has the structure { copiesSold: any number, title: any string }", function
     copiesSold: 5014,
     title: "THE LIGHTHOUSE (1984)",
   };
+  const expected = {
+    copiesSold: expect.any(Number),
+    title: expect.any(String),
+  };
+  const actual = apiResponse;
+  expect(actual).toStrictEqual(expected);
 });
 
 /**
@@ -48,7 +58,7 @@ test("Has the structure { copiesSold: any number, title: any string }", function
  *
  * Since `getAuthentication` is asynchronous, you may need to read up on how to write an asynchronous test in Jest: https://jestjs.io/docs/asynchronous
  */
-test("Has the structure { success: true, payload: { hasAuthenticated: true, isAdmin: false, userId: any number } }", function () {
+test("Has the structure { success: true, payload: { hasAuthenticated: true, isAdmin: false, userId: any number } }", async function () {
   async function getAuthentication() {
     return {
       success: true,
@@ -59,6 +69,16 @@ test("Has the structure { success: true, payload: { hasAuthenticated: true, isAd
       },
     };
   }
+  const expected = {
+    success: true,
+    payload: {
+      isAuthenticated: true,
+      isAdmin: false,
+      userId: expect.any(Number),
+    },
+  };
+  const actual = await getAuthentication();
+  expect(actual).toStrictEqual(expected);
 });
 
 /**
@@ -73,14 +93,27 @@ test("Has the structure { success: true, payload: { hasAuthenticated: true, isAd
  *
  * Since `getUsernames` is asynchronous, you may need to read up on how to write an asynchronous test in Jest: https://jestjs.io/docs/asynchronous
  */
-async function getUsernames() {
-  return {
+
+test("Has", async function () {
+  async function getUsernames() {
+    return {
+      success: true,
+      payload: [
+        { username: "A" },
+        { username: "B" },
+        { username: "C" },
+        { username: "D" },
+      ],
+    };
+  }
+  const expected = {
     success: true,
-    payload: [
-      { username: "A" },
-      { username: "B" },
-      { username: "C" },
-      { username: "D" },
-    ],
+    payload: expect.any(Array),
   };
-}
+  const actual = await getUsernames();
+  expect(actual).toStrictEqual(expected);
+  actual.payload.forEach((user) => {
+    const expectedObj = { username: expect.any(String) };
+    expect(user).toStrictEqual(expectedObj);
+  });
+});
