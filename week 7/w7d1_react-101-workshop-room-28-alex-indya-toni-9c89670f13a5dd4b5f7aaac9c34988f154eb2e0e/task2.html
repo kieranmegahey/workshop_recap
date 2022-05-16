@@ -23,6 +23,11 @@
       }
       function Button() {
         // code here
+        return React.createElement(
+          "button",
+          { className: "button", onClick: handleClick },
+          "hello mate"
+        );
       }
 
       ReactDOM.render(Button(), rootElement);
