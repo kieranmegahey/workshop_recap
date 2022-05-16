@@ -20,7 +20,9 @@
       const rootElement = document.querySelector("#root");
 
       function ListItem(props) {
+        console.log(props);
         // code here
+        return <li>{props.text}</li>;
       }
 
       ReactDOM.render(
