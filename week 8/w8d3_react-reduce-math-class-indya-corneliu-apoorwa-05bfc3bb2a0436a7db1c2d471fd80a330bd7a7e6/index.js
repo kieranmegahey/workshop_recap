@@ -15,6 +15,9 @@ an initial value of zero after your reduce callback function. */
 
 export function add(numbers) {
   //Your code here
+  return numbers.reduce((a, b) => {
+    return a + b;
+  }, 0);
 }
 
 /* 👉 2. In addIfTwoDigits, use reduce to add up *only* the numbers 
@@ -22,6 +25,9 @@ that have exactly two digits. Return the sum.*/
 
 export function addIfTwoDigits(numbers) {
   //Your code here
+  return numbers.reduce((acc, curr) => {
+    return curr > 9 && curr < 100 ? acc + curr : acc;
+  }, 0);
 }
 
 /* 👉 3. In addWithDoubleOdds, use reduce to double the odd numbers 
@@ -30,6 +36,11 @@ the sum of the whole array with the odd numbers doubled.*/
 
 export function addWithDoubleOdds(numbers) {
   //Your code here
+
+  return numbers.reduce((acc, curr) => {
+    const doubledOdd = curr % 2 !== 0 ? curr * 2 : curr;
+    return acc + doubledOdd;
+  }, 0);
 }
 
 /* 🌟 BONUS: 4. Reduce isn't just for numbers. In createObjectFromKeyValuePairs, 
